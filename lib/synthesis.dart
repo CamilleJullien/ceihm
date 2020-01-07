@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'task.dart';
 import 'main.dart';
+import 'foodList.dart';
 
 class Synthesis extends StatefulWidget{
   @override
@@ -92,12 +93,11 @@ class _SynthesisState extends State<Synthesis>{
           onPressed: (){
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => MyHomePage(title: 'Flutter Demo Home Page')),
+              MaterialPageRoute(builder: (context) => FoodList()),
             );
           },
         tooltip: 'Increment',
         child: new Text('OK', style: TextStyle(fontSize: 10.0, color: Colors.white)),
-        //child: new Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
