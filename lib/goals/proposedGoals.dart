@@ -19,20 +19,27 @@ class ProposedGoals extends StatelessWidget{
 
     final List<Goal> goals = new List();
     goals.add(new Goal("Manger des carottes 2 fois par semaine pendant 3 "
-        "semaine", Colors.red));
-    goals.add(new Goal("Manger des asperges 1 fois par semaine pendant 3 "
-        "semaine", Colors.red));
+        "semaine", Colors.red, "carrot.png"));
+    goals.add(new Goal("Manger du poisson 1 fois par semaine pendant 3 "
+        "semaine", Colors.red, "fish.png"));
 
     return ListView.builder(
       itemCount: goals.length,
       itemBuilder: (context, index) {
         return Card(
           child: ListTile(
-            title: Text(goals[index].goalSentence),
+              leading: new Image.asset("assets/" + goals[index].image, width:
+              30, height: 30),
+              title: Text(goals[index].goalSentence),
+              onTap: () => onCardTap(goals[index])
           ),
         );
       },
     );
+  }
+
+  onCardTap(Goal goal){
+    print("taped " + goal.goalSentence);
   }
 }
 

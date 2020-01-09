@@ -13,9 +13,6 @@ class _Goals extends State<Goals> with SingleTickerProviderStateMixin{
   void initState(){
     super.initState();
     _tabController = new TabController(length: 2, vsync: this);
-
-    setState((){
-    });
   }
 
   @override
@@ -25,11 +22,23 @@ class _Goals extends State<Goals> with SingleTickerProviderStateMixin{
           bottom: TabBar(
             tabs: [
               new Tab(text: "En cours"),
-              new Tab(text: "Proposé")
+              new Tab(text: "Proposés")
             ],
             controller: _tabController,
           ),
-          title: Text('Flutter Tabs Example'),
+          centerTitle: true,
+          title: Text('Objectifs'),
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.centerRight,
+              end: Alignment(-1.0, -1.0),
+              colors: <Color>[
+                Color(0xff8d70fe),
+                Color(0xff2da9ef)
+            ])
+            ),
+          ),
         ),
         body: new TabBarView(
           children: <Widget> [

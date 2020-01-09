@@ -130,7 +130,10 @@ class _FoodList extends State<FoodList>{
                 decoration: BoxDecoration(
                   color: Color(0xff5a348b),
                   gradient: LinearGradient(
-                      colors: [Color(0xff8d70fe), Color(0xff2da9ef)],
+                      colors: [
+                        Color(0xff8d70fe),
+                        Color(0xff2da9ef)
+                      ],
                       begin: Alignment.centerRight,
                       end: Alignment(-1.0, -1.0)
                   ),
