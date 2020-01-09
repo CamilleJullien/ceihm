@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'synthesis.dart';
+import 'package:ceihm/goals/goals.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Synthesis(),
+      home: Goals(),
       //home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
