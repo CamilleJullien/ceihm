@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'synthesis.dart';
 import 'package:ceihm/goals/goals.dart';
+import 'profile.dart';
+import 'synthesis.dart';
 
 void main() => runApp(MyApp());
 
