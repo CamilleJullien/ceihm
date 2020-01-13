@@ -65,10 +65,13 @@ class _SynthesisState extends State<Synthesis>{
 
             Positioned(
               top: 170.0,
-              left:18.0,
+              //left:18.0,
               child: Container(
                 color: Colors.white,
-                width: 380,
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width,
                 height: MediaQuery
                     .of(context)
                     .size
@@ -139,16 +142,20 @@ class _SynthesisState extends State<Synthesis>{
   Widget _myHeaderContent(){
     return Align(
       child: ListTile(
-        leading: IconButton(icon: Icon(FontAwesomeIcons.clipboardCheck), color: Colors.amber, iconSize:50.0, onPressed: (){},),
+        leading: IconButton(icon: Icon(FontAwesomeIcons.clipboardCheck), color: Colors.white, iconSize:50.0, onPressed: (){},),
         //leading: Text('1', style: TextStyle(fontSize: 50.0, color: Colors.amber)),
-        title: Text('Synthèse', style: TextStyle(fontSize: 30.0, color: Colors.white)),
+        title: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 0.0),
+          child: Text('Synthèse', style: TextStyle(fontSize: 30.0, color: Colors.white)),
+        ),
+
         subtitle: Text('Voici la liste des carences que vous pourrez avoir.', style: TextStyle(fontSize: 14.0, color: Colors.white)),
       ),
     );
   }
   Widget _myListContainer(String deficiencyName, String deficiencyDescription, String deficiencyTime, Color deficiencyColor){
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(12.0),
       child: Container(
         //height: 180.0,
         child: Material(
@@ -158,11 +165,11 @@ class _SynthesisState extends State<Synthesis>{
           child: Container(
             child: Row(
               children: <Widget>[
-                Container(
+                /*Container(
                   height: 80.0,
                   width: 10.0,
                   color: deficiencyColor,
-                ),
+                ),*/
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -171,12 +178,15 @@ class _SynthesisState extends State<Synthesis>{
                       children: <Widget>[
                         Align(
                           alignment: Alignment.topLeft,
-                          child: Container(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 0.0),
+                          child : Container(
                             child: Text(deficiencyName, style: TextStyle(
                               fontSize: 24.0,
                               color: Colors.black,
                               fontWeight: FontWeight.bold
                             )),
+                          ),
                           ),
                         ),
                         Align(
@@ -186,11 +196,26 @@ class _SynthesisState extends State<Synthesis>{
                                 .of(context)
                                 .size
                                 .width/1.5,
-                            child: Text(deficiencyDescription, textAlign: TextAlign.justify, style: TextStyle(
+                            child: Text(deficiencyDescription, style: TextStyle(
+                              //child: Text(deficiencyDescription, textAlign: TextAlign.justify, style: TextStyle(
                                 fontSize: 18.0,
                                 color: Colors.black
                             )),
+                            /*child: FloatingActionButton(
+                              backgroundColor: Color(0xff2da9ef),
+                              foregroundColor: Color(0xffffffff),
+                              onPressed: (){
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => FoodList()),
+                                );
+                              },
+                              tooltip: 'Increment',
+                              child: new Text('OK', style: TextStyle(fontSize: 10.0, color: Colors.white)),
+
+                            ),*/
                           ),
+
                         ),
                       ],
                     ),
