@@ -32,7 +32,23 @@ class _ProfileState extends State<Profile>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text('Profile'),
+          flexibleSpace: Container(
+          decoration: BoxDecoration(
+          gradient: LinearGradient(
+          begin: Alignment.centerRight,
+          end: Alignment(-1.0, -1.0),
+          colors: <Color>[
+          Color(0xff8d70fe),
+          Color(0xff2da9ef)
+          ])
+          ),
+          ),
+        ),
       body: SafeArea(
+
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -78,7 +94,6 @@ class _ProfileState extends State<Profile>{
           ],
         ),
       ),
-      backgroundColor: Colors.teal[200],
     );
   }
 }
