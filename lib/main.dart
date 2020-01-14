@@ -1,3 +1,4 @@
+import 'package:ceihm/questionnaire/page1.dart';
 import 'package:flutter/material.dart';
 import 'goals/goals.dart';
 import 'synthesis.dart';

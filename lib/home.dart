@@ -1,3 +1,4 @@
+import 'package:ceihm/questionnaire/page1.dart';
 import 'package:flutter/material.dart';
 import 'synthesis.dart';
 import 'package:ceihm/goals/goals.dart';
@@ -91,9 +92,14 @@ class _HomeState extends State<Home> {
                     minWidth: 160.0,
                     height: 130.0,
                     child: RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Page1()),
+                        );
+                      },
                       child: Text(
-                        "Questionnaires",
+                        "Questionnaire",
                         style: TextStyle(
                           fontSize: 20.0,
                         ),),
