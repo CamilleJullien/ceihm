@@ -2,22 +2,18 @@ import 'package:flutter/material.dart';
 import 'GoalsList.dart';
 import 'goalObject.dart';
 
-class ProposedGoals extends StatefulWidget {
+class SelectedGoals extends StatefulWidget {
   @override
-  ProposedGoalsState createState() => ProposedGoalsState();
+  SelectedGoalsState createState() => SelectedGoalsState();
 }
 
-class ProposedGoalsState extends State<ProposedGoals> with
-    AutomaticKeepAliveClientMixin<ProposedGoals> {
+class SelectedGoalsState extends State<SelectedGoals> {
   List<Goal> goals;
-
-  @override
-  bool get wantKeepAlive => true;
 
   @override
   void initState() {
     super.initState();
-    goals = GoalsList().getList();
+    goals = GoalsList().getSelectedGoals();
   }
 
   @override
@@ -45,22 +41,17 @@ class ProposedGoalsState extends State<ProposedGoals> with
                   height: 30
               ),
               trailing: new Image.asset (
-                "assets/" + getImageSelectedOrNot(goals[index].status),
-                width: 20,
-                height: 20
+                  "assets/" + getImageSelectedOrNot(goals[index].status),
+                  width: 20,
+                  height: 20
               ),
-              title: Text(goals[index].goalSentence,
-                  textAlign: TextAlign.center),
-              onTap: () => setState(()=>onCardTap(goals[index]))
+              title:
+                Text(goals[index].goalSentence,
+                textAlign: TextAlign.center)
           ),
         );
       },
     );
-  }
-
-  onCardTap(Goal goal){
-    goal.changeStatus(!goal.status);
-    print("taped " + goal.goalSentence);
   }
 
   getImageSelectedOrNot(bool selected){
