@@ -4,6 +4,7 @@ import 'task.dart';
 import 'main.dart';
 import 'home.dart' ;
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flat_icons_flutter/flat_icons_flutter.dart';
 
 class FoodList extends StatefulWidget{
   @override
@@ -12,95 +13,131 @@ class FoodList extends StatefulWidget{
 
 class _FoodList extends State<FoodList>{
 
-  final List<Deficiency> deficiencies = new List();
-  @override
-  void initState(){
-    super.initState();
-
-    setState((){
-      deficiencies.add(new Deficiency("Carence en fer", "Cela entraine une diminution de la capacité de travail et la dégradation de la fonction immunitaire et endocrinienne.", "Fe", Colors.red));
-      deficiencies.add(new Deficiency("Carence en calcium", "Cette carence entraine des crampes, des fractures et en général une carence en vitamine D.", "Ca", Colors.purple));
-      deficiencies.add(new Deficiency("Carence en vitamine D", "Cette carence entraine de la fatigue, une faiblesse musculaire, parfois une peau sèche et des crampes.", "D", Colors.amber));
-      deficiencies.add(new Deficiency("Carence en iode", "Cette carence entraine de la fatigue, une prise de poids inexpliquée, une peau sèche et la perte de cheveux", "I", Colors.green));
-      deficiencies.add(new Deficiency("Vitamine B12", "Cette carence entraine un essoufflement, des vertiges, des palpitations, des picotements ou des engourdissements des pieds et des mains.", "B12", Colors.blue));
-
-
-    });
-  }
-
-  Material myItems(String heading, int color){
-    return Material(
-      color: Colors.white,
-      elevation: 14.0,
-      shadowColor: Color(0x802196f3),
-      borderRadius: BorderRadius.circular(24.0),
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  // Text
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(heading, style: TextStyle(color: new Color(color), fontSize: 20.0,),
-                      ),
-                    ),
-                  //Icon
-                 /* Material(
-                    color: new Color(color),
-                    borderRadius: BorderRadius.circular(24.0),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Icon(
-                        icon,
-                        color: Colors.white,
-                        size:30.0,
-                      ),
-
-                    ),
-                  ),*/
-
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-  Material myTitle(String heading, int color){
-    return Material(
-      color: Colors.white,
-      elevation: 14.0,
-      shadowColor: Color(0x802196f3),
-      borderRadius: BorderRadius.circular(24.0),
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  // Text
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(heading, style: TextStyle(color: new Color(color), fontSize: 20.0,fontWeight: FontWeight.bold),
+  Widget item(String food, String image){
+    return Padding(
+      padding: const EdgeInsets.all(0.0),
+      child: Container(
+        child: Material(
+          color: Colors.white,
+          elevation: 5.0,
+          shadowColor: Color(0x802196F3),
+          borderRadius: BorderRadius.circular(24.0),
+          child: Container(
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(0.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Align(
+                          alignment: Alignment.centerLeft,
+                            child: Container(
+                              color: Colors.transparent,
+                              child: new Container(
+                                child: new Center(
+                                  child: new Image.asset(image, width: 30, height: 30),
+                                ),
+                              ),
+                            ),
+                          ),
+                      ],
                     ),
                   ),
-                ],
-              ),
-            ],
+                ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 0.0),
+                    child : Container(
+                      width:MediaQuery.of(context).size.width/1.5,
+                      child: Text(food, style: TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.black
+                      )),
+                    ),
+                  ),
+                ),
+
+              ],
+            ),
           ),
         ),
       ),
     );
+
   }
+  Widget title(String deficiencyName, String deficiencyTime){
+    return Padding(
+      padding: const EdgeInsets.all(0.0),
+      child: Container(
+        child: Material(
+          color: Colors.white,
+          elevation: 5.0,
+          shadowColor: Color(0x802196F3),
+          borderRadius: BorderRadius.circular(24.0),
+          child: Container(
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 0.0),
+                            child : Container(
+                              child: Text(deficiencyName, style: TextStyle(
+                                  fontSize: 24.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold
+                              )),
+                            ),
+                          ),
+                        ),
+
+                      ],
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height:50,
+                      width:50,
+                      color: Colors.transparent,
+                      child: new Container(
+                        decoration: new BoxDecoration(
+                            color: Color(0xff8d70fe),
+                            borderRadius: new BorderRadius.only(
+                                topLeft: const Radius.circular(40.0),
+                                topRight: const Radius.circular(40.0))),
+                        child: new Center(
+                          child: Text(deficiencyTime, textAlign: TextAlign.center,  style: TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          )),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+
+  }
+
 
 
 
@@ -151,73 +188,73 @@ class _FoodList extends State<FoodList>{
                   height: MediaQuery
                       .of(context)
                       .size
-                      .height/1.4,
+                      .height/1.3,
                   child: StaggeredGridView.count(
                     crossAxisCount: 2,
                     crossAxisSpacing: 10.0,
                     mainAxisSpacing: 10.0,
                     padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                     children: <Widget>[
-                      myTitle("Carence en fer", 0xffdb1330),
-                      myItems("Viandes rouges", 0xffdb1330),
-                      myItems("Betterave", 0xffdb1330),
-                      myItems("Lentilles", 0xffdb1330),
-                      myItems("Boudin noir", 0xffdb1330),
+                      title("Carence en fer", "Fe"),
+                      item("Viandes rouges", "assets/meat.png"),
+                      item("Betterave", "assets/beet.png"),
+                      item("Lentilles", "assets/legumes.png"),
+                      item("Boudin noir", "assets/black-pudding.png"),
 
-                      myTitle("Carence en calcium", 0xff8d13d6),
-                      myItems("Produits laitiers", 0xff8d13d6),
-                      myItems("Légumes verts", 0xff8d13d6),
-                      myItems("Poissons", 0xff8d13d6),
-                      myItems("Lait de soja", 0xff8d13d6),
+                      title("Carence en calcium", "Ca"),
+                      item("Produits laitiers", "assets/yogurt.png"),
+                      item("Légumes verts", "assets/green-vegetables.png"),
+                      item("Poissons", "assets/fish.png"),
+                      item("Lait de soja", "assets/milk.png"),
 
-                      myTitle("Carence en vitamine D", 0xffeeae38),
-                      myItems("Oeufs", 0xffeeae38),
-                      myItems("Poissons gras", 0xffeeae38),
-                      myItems("Champignon", 0xffeeae38),
-                      myItems("Lait de soja", 0xffeeae38),
+                      title("Carence en vitamine D", "D"),
+                      item("Oeufs", "assets/egg.png"),
+                      item("Poissons gras", "assets/fish.png"),
+                      item("Champignon", "assets/mushroom.png"),
+                      item("Lait de soja", "assets/milk.png"),
 
-                      myTitle("Carence en iode", 0xff0faf3e),
-                      myItems("Fruits de mer", 0xff0faf3e),
-                      myItems("Poissons", 0xff0faf3e),
-                      myItems("Produits laitiers", 0xff0faf3e),
-                      myItems("Algues", 0xff0faf3e),
+                      title("Carence en iode", "I"),
+                      item("Fruits de mer", "assets/seafood.png"),
+                      item("Poissons", "assets/fish.png"),
+                      item("Produits laitiers", "assets/yogurt.png"),
+                      item("Algues", "assets/milk.png"),
 
-                      myTitle("Carence en vitamine B12", 0xff2996ec),
-                      myItems("Crustacés", 0xff2996ec),
-                      myItems("Fromages", 0xff2996ec),
-                      myItems("Poissons", 0xff2996ec),
-                      myItems("Viandes", 0xff2996ec),
+                      title("Carence en vitamine B12", "B12"),
+                      item("Crustacés", "assets/seafood.png"),
+                      item("Fromages", "assets/cheese.png"),
+                      item("Poissons", "assets/fish.png"),
+                      item("Viandes", "assets/meat.png"),
                     ],
                     staggeredTiles: [
-                      StaggeredTile.extent(2, 70.0),
-                      StaggeredTile.extent(1, 60.0),
-                      StaggeredTile.extent(1, 60.0),
-                      StaggeredTile.extent(1, 60.0),
-                      StaggeredTile.extent(1, 60.0),
+                      StaggeredTile.extent(2, 100.0),
+                      StaggeredTile.extent(2, 50.0),
+                      StaggeredTile.extent(2, 50.0),
+                      StaggeredTile.extent(2, 50.0),
+                      StaggeredTile.extent(2, 50.0),
 
-                      StaggeredTile.extent(2, 70.0),
-                      StaggeredTile.extent(1, 60.0),
-                      StaggeredTile.extent(1, 60.0),
-                      StaggeredTile.extent(1, 60.0),
-                      StaggeredTile.extent(1, 60.0),
+                      StaggeredTile.extent(2, 100.0),
+                      StaggeredTile.extent(2, 50.0),
+                      StaggeredTile.extent(2, 50.0),
+                      StaggeredTile.extent(2, 50.0),
+                      StaggeredTile.extent(2, 50.0),
 
-                      StaggeredTile.extent(2, 70.0),
-                      StaggeredTile.extent(1, 60.0),
-                      StaggeredTile.extent(1, 60.0),
-                      StaggeredTile.extent(1, 60.0),
-                      StaggeredTile.extent(1, 60.0),
+                      StaggeredTile.extent(2, 100.0),
+                      StaggeredTile.extent(2, 50.0),
+                      StaggeredTile.extent(2, 50.0),
+                      StaggeredTile.extent(2, 50.0),
+                      StaggeredTile.extent(2, 50.0),
 
-                      StaggeredTile.extent(2, 70.0),
-                      StaggeredTile.extent(1, 60.0),
-                      StaggeredTile.extent(1, 60.0),
-                      StaggeredTile.extent(1, 60.0),
-                      StaggeredTile.extent(1, 60.0),
+                      StaggeredTile.extent(2, 100.0),
+                      StaggeredTile.extent(2, 50.0),
+                      StaggeredTile.extent(2, 50.0),
+                      StaggeredTile.extent(2, 50.0),
+                      StaggeredTile.extent(2, 50.0),
 
-                      StaggeredTile.extent(2, 70.0),
-                      StaggeredTile.extent(1, 60.0),
-                      StaggeredTile.extent(1, 60.0),
-                      StaggeredTile.extent(1, 60.0),
-                      StaggeredTile.extent(1, 60.0),
+                      StaggeredTile.extent(2, 100.0),
+                      StaggeredTile.extent(2, 50.0),
+                      StaggeredTile.extent(2, 50.0),
+                      StaggeredTile.extent(2, 50.0),
+                      StaggeredTile.extent(2, 50.0),
 
                     ],
                   ),
@@ -262,7 +299,7 @@ class _FoodList extends State<FoodList>{
               height: MediaQuery
                   .of(context)
                   .size
-                  .width/9,
+                  .width/25,
             ),
           ],
         ),
@@ -274,7 +311,7 @@ class _FoodList extends State<FoodList>{
   Widget _myHeaderContent(){
     return Align(
       child: ListTile(
-        leading: IconButton(icon: Icon(FontAwesomeIcons.utensils), color: Colors.amber, iconSize:50.0, onPressed: (){},),
+        leading: IconButton(icon: Icon(FontAwesomeIcons.utensils), color: Colors.white, iconSize:50.0, onPressed: (){},),
         title: Text('Nos conseils', style: TextStyle(fontSize: 30.0, color: Colors.white)),
         subtitle: Text("Voici la liste des aliments que l'on vous propose de manger", style: TextStyle(fontSize: 14.0, color: Colors.white)),
       ),

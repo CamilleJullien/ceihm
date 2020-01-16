@@ -21,7 +21,7 @@ class _SynthesisState extends State<Synthesis>{
       deficiencies.add(new Deficiency("Carence en calcium", "Cette carence entraine des crampes, des fractures et en général une carence en vitamine D.", "Ca", Colors.purple));
       deficiencies.add(new Deficiency("Carence en vitamine D", "Cette carence entraine de la fatigue, une faiblesse musculaire, parfois une peau sèche et des crampes.", "D", Colors.amber));
       deficiencies.add(new Deficiency("Carence en iode", "Cette carence entraine de la fatigue, une prise de poids inexpliquée, une peau sèche et la perte de cheveux", "I", Colors.green));
-      deficiencies.add(new Deficiency("Vitamine B12", "Cette carence entraine un essoufflement, des vertiges, des palpitations, des picotements ou des engourdissements des pieds et des mains.", "B12", Colors.blue));
+      deficiencies.add(new Deficiency("Carence en vitamine B12", "Cette carence entraine un essoufflement, des vertiges, des palpitations, des picotements ou des engourdissements des pieds et des mains.", "B12", Colors.blue));
 
 
     });
@@ -75,7 +75,7 @@ class _SynthesisState extends State<Synthesis>{
                 height: MediaQuery
                     .of(context)
                     .size
-                    .height/1.4,
+                    .height/1.3,
                 child: ListView.builder(
                     itemCount: deficiencies.length,
                     itemBuilder: (context, position){
@@ -100,7 +100,7 @@ class _SynthesisState extends State<Synthesis>{
             );
           },
         tooltip: 'Increment',
-        child: new Text('OK', style: TextStyle(fontSize: 10.0, color: Colors.white)),
+        child: new Text('Suivant', style: TextStyle(fontSize: 10.0, color: Colors.white)),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
@@ -115,7 +115,7 @@ class _SynthesisState extends State<Synthesis>{
               height: MediaQuery
                   .of(context)
                   .size
-                  .width/9,
+                  .width/25,
             ),
            /* IconButton(
               icon: Icon(FontAwesomeIcons.stickyNote),
@@ -160,7 +160,7 @@ class _SynthesisState extends State<Synthesis>{
         //height: 180.0,
         child: Material(
           color: Colors.white,
-          elevation: 14.0,
+          elevation: 5.0,
           shadowColor: Color(0x802196F3),
           child: Container(
             child: Row(
@@ -201,19 +201,7 @@ class _SynthesisState extends State<Synthesis>{
                                 fontSize: 18.0,
                                 color: Colors.black
                             )),
-                            /*child: FloatingActionButton(
-                              backgroundColor: Color(0xff2da9ef),
-                              foregroundColor: Color(0xffffffff),
-                              onPressed: (){
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => FoodList()),
-                                );
-                              },
-                              tooltip: 'Increment',
-                              child: new Text('OK', style: TextStyle(fontSize: 10.0, color: Colors.white)),
 
-                            ),*/
                           ),
 
                         ),
@@ -226,11 +214,24 @@ class _SynthesisState extends State<Synthesis>{
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      child: Text(deficiencyTime, style: TextStyle(
-                          fontSize: 18.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold
-                      )),
+                      height:50,
+                      width:50,
+                      color: Colors.transparent,
+                      child: new Container(
+                      decoration: new BoxDecoration(
+                          color: Color(0xff8d70fe),
+                          borderRadius: new BorderRadius.only(
+                              topLeft: const Radius.circular(40.0),
+                              topRight: const Radius.circular(40.0))),
+                      child: new Center(
+                        child: Text(deficiencyTime, textAlign: TextAlign.center,  style: TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          //backgroundColor: Color(0xff8d70fe)
+                        )),
+                      ),
+                      ),
                     ),
                   ),
                 ),
