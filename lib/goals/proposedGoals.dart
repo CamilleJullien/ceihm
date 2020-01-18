@@ -65,9 +65,9 @@ class ProposedGoalsState extends State<ProposedGoals> with
 
   getImageSelectedOrNot(bool selected){
     if(!selected)
-      return "close.png";
+      return "not_validated.png";
     else
-      return "tick.png";
+      return "validated.png";
   }
 }
 
