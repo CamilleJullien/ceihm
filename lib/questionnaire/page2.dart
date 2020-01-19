@@ -103,6 +103,7 @@ class _Page2State extends State<Page2> {
                   RaisedButton(
                     padding: EdgeInsets.all(0.0),
                     onPressed: () {
+                      User.isQuestionnaireOver = true;
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => Synthesis()),
