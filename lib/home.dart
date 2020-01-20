@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'data/user.dart';
 import 'synthesis.dart';
 import 'package:ceihm/goals/goals.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Home extends StatefulWidget {
   // This widget is the home page of your application. It is stateful, meaning
@@ -19,138 +20,102 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('Accueil'),
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.centerRight,
-                  end: Alignment(-1.0, -1.0),
-                  colors: <Color>[Color(0xff8d70fe), Color(0xff2da9ef)])),
-        ),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          // crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              child: Text(
-                'Bienvenue',
-                style: TextStyle(
-                  fontSize: 30.0,
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Stack(
+            children: <Widget>[
+              Positioned(
+                child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.width / 2,
+                decoration: BoxDecoration(
+                  color: Color(0xff5a348b),
+                  gradient: LinearGradient(
+                      colors: [Color(0xff8d70fe), Color(0xff2da9ef)],
+                      begin: Alignment.centerRight,
+                      end: Alignment(-1.0, -1.0)),
+                ),
+               child: _myHeaderContent(),
                 ),
               ),
-            ),
-            Container(
-              child: Text(
-                // '$_counter',
-                // style: Theme.of(context).textTheme.display1,
-                'cette application vous permettra de mieux gérer votre alimentation.',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 20.0,
+               Positioned(
+                 top:270,
+
+                 child:Container(
+                   width:MediaQuery.of(context).size.width,
+                   child:Text('Pour accéder à plus de fonctionnalité veuillez remplir le quizz', textAlign: TextAlign.center,style: TextStyle(fontSize: 20.0)),
+                 ),
+
+               ),
+               Positioned.fill(
+               top:1,
+               child:Container(
+                margin: EdgeInsets.all(30),
+                  child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      ButtonTheme(
+                        minWidth: 160.0,
+                        height: 130.0,
+                        child: RaisedButton(
+                          onPressed: () {
+                            Navigator.push(context,MaterialPageRoute(builder: (context) => Page1()),);
+                            },
+                        child: Text("Questionnaire", style: TextStyle(fontSize: 20.0, color: Colors.white)),
+                        color: Color(0xff8d70fe),
+                        ),
+                      ),
+                       ButtonTheme(
+                       minWidth: 160.0,
+                       height: 130.0,
+                        child: RaisedButton(
+                          onPressed: () {},
+                          child: Text("Aliments", style: TextStyle(fontSize: 20.0,color: Colors.white)),
+                          color: Color(0xff8d70fe),
+                        ),
+                        ),
+                  ],
+                  ),
                 ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.all(15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  ButtonTheme(
-                    minWidth: 160.0,
-                    height: 130.0,
-                    child: RaisedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Page1()),
-                        );
-                      },
-                      child: Text(
-                        "Questionnaire",
-                        style: TextStyle(
-                          fontSize: 20.0,
+               ),
+              Positioned.fill(
+                  top:280,
+                  child: Container(
+                    margin: EdgeInsets.all(30),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        ButtonTheme(
+                          minWidth: 160.0,
+                          height: 130.0,
+                          child: updateObjectifs(),
                         ),
-                      ),
-                      color: Colors.amber,
-                    ),
-                  ),
-                  ButtonTheme(
-                    minWidth: 160.0,
-                    height: 130.0,
-                    child: RaisedButton(
-                      onPressed: () {},
-                      child: Text(
-                        "Aliments",
-                        style: TextStyle(
-                          fontSize: 20.0,
+                        ButtonTheme(
+                          minWidth: 160.0,
+                          height: 130.0,
+                          child: RaisedButton(
+                            onPressed: () {},
+                            child: Text("Carences", style: TextStyle(fontSize: 20.0,color: Colors.white)),
+                            color: Color(0xff8d70fe),
+                          ),
                         ),
-                      ),
-                      color: Colors.amber,
+                      ],
                     ),
-                  ),
-                ],
+                  )
               ),
-            ),
-            Container(
-              margin: EdgeInsets.all(13),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  ButtonTheme(
-                    minWidth: 160.0,
-                    height: 130.0,
-                    child: updateObjectifs(),
-                  ),
-                  ButtonTheme(
-                    minWidth: 160.0,
-                    height: 130.0,
-                    child: RaisedButton(
-                      onPressed: () {},
-                      child: Text(
-                        "Carences",
-                        style: TextStyle(
-                          fontSize: 20.0,
-                        ),
-                      ),
-                      color: Colors.amber,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
+    ],),),
+
+
     );
   }
+
+
 
   Widget updateObjectifs() {
     if (User.isQuestionnaireOver) {
@@ -161,25 +126,32 @@ class _HomeState extends State<Home> {
             MaterialPageRoute(builder: (context) => Goals()),
           );
         },
-        child: Text(
-          "Objectifs",
-          style: TextStyle(
-            fontSize: 20.0,
-          ),
-        ),
-        color: Colors.amber,
+        child: Text("Objectifs", style: TextStyle(fontSize: 20.0,color: Colors.white)),
+        color: Color(0xff8d70fe),
       );
     } else {
       return RaisedButton(
         onPressed: null,
-        child: Text(
-          "Objectifs",
-          style: TextStyle(
-            fontSize: 20.0,
-          ),
-        ),
-        color: Colors.amber,
+        child: Text("Objectifs", style: TextStyle(fontSize: 20.0,color: Colors.white)),
+        color: Color(0xff8d70fe),
       );
     }
   }
+  Widget _myHeaderContent() {
+    return Align(
+      child: ListTile(
+        leading: IconButton(
+          icon: Icon(FontAwesomeIcons.home),
+          color: Colors.white,
+          iconSize: 50.0,
+          onPressed: () {},
+        ),
+        title: Text('Bienvenue',
+            style: TextStyle(fontSize: 30.0, color: Colors.white)),
+        subtitle: Text("Notre application va vous permettre d'identifier vos carences et de vous proposez des conseils pour palier à ces carences",
+            style: TextStyle(fontSize: 15.0, color: Colors.white)),
+      ),
+    );
+  }
 }
+/*Text('Pour accéder à plus de fonctionnalité veuillez remplir le quizz'),*/
