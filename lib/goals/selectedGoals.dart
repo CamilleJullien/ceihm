@@ -29,36 +29,53 @@ class SelectedGoalsState extends State<SelectedGoals> {
 
 
   Widget _myListView(BuildContext context) {
-
     return ListView.builder(
       itemCount: goals.length,
+      shrinkWrap: true,
       itemBuilder: (context, index) {
         return Card(
-          child: ListTile(
-              leading: new Image.asset(
-                  "assets/" + goals[index].image,
-                  width: 30,
-                  height: 30
+          child: Column(
+            children: <Widget>[
+              ListTile(
+                  leading: new Image.asset(
+                      "assets/" + goals[index].image,
+                      width: 30,
+                      height: 30
+                  ),
+                  title:
+                  Text(goals[index].goalSentence,
+                      textAlign: TextAlign.center)
               ),
-              trailing: new Image.asset (
-                  "assets/" + getImageSelectedOrNot(goals[index].status),
-                  width: 20,
-                  height: 20
-              ),
-              title:
-                Text(goals[index].goalSentence,
-                textAlign: TextAlign.center)
+             Container(
+               height: 50,
+               child: ListView.builder(
+                 itemCount: goals[index].statusL.length,
+                 scrollDirection: Axis.horizontal,
+                 itemBuilder: (context, indexCheck){
+                   return Container(
+                       width: MediaQuery.of(context).size.width/(goals[index]
+                           .statusL.length),
+                       padding: EdgeInsets.all(15.0),
+                       child: Container(
+                         child: Row(
+                           children: <Widget>[
+                             new Image.asset("assets/" + goals[index]
+                                 .statusL[indexCheck].getStatusValue() + ".png",
+                                 width: 20, height: 20),
+                           ],
+                         ),
+                       )
+                   );
+                 }
+                 )
+             )
+            ],
           ),
         );
       },
     );
   }
 
-  getImageSelectedOrNot(bool selected){
-    if(!selected)
-      return "close.png";
-    else
-      return "tick.png";
-  }
+  
 }
 

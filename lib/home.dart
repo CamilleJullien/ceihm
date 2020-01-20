@@ -1,8 +1,8 @@
 import 'package:ceihm/questionnaire/page1.dart';
 import 'package:flutter/material.dart';
+import 'data/user.dart';
 import 'synthesis.dart';
 import 'package:ceihm/goals/goals.dart';
-
 
 class Home extends StatefulWidget {
   // This widget is the home page of your application. It is stateful, meaning
@@ -49,11 +49,7 @@ class _HomeState extends State<Home> {
               gradient: LinearGradient(
                   begin: Alignment.centerRight,
                   end: Alignment(-1.0, -1.0),
-                  colors: <Color>[
-                    Color(0xff8d70fe),
-                    Color(0xff2da9ef)
-                  ])
-          ),
+                  colors: <Color>[Color(0xff8d70fe), Color(0xff2da9ef)])),
         ),
       ),
       body: Center(
@@ -64,7 +60,7 @@ class _HomeState extends State<Home> {
           // crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Container(
-              child:  Text(
+              child: Text(
                 'Bienvenue',
                 style: TextStyle(
                   fontSize: 30.0,
@@ -72,11 +68,10 @@ class _HomeState extends State<Home> {
               ),
             ),
             Container(
-              child:Text(
+              child: Text(
                 // '$_counter',
                 // style: Theme.of(context).textTheme.display1,
-                'cette application vous permettra de mieux gérer votre alimentation.'
-                ,
+                'cette application vous permettra de mieux gérer votre alimentation.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 20.0,
@@ -102,11 +97,11 @@ class _HomeState extends State<Home> {
                         "Questionnaire",
                         style: TextStyle(
                           fontSize: 20.0,
-                        ),),
+                        ),
+                      ),
                       color: Colors.amber,
                     ),
                   ),
-
                   ButtonTheme(
                     minWidth: 160.0,
                     height: 130.0,
@@ -124,25 +119,15 @@ class _HomeState extends State<Home> {
                 ],
               ),
             ),
-
             Container(
               margin: EdgeInsets.all(13),
-              child:Row(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   ButtonTheme(
                     minWidth: 160.0,
                     height: 130.0,
-                    child: RaisedButton(
-                      onPressed: null,
-                      child: Text(
-                        "Objectifs",
-                        style: TextStyle(
-                          fontSize: 20.0,
-                        ),
-                      ),
-                      color: Colors.amber,
-                    ),
+                    child: updateObjectifs(),
                   ),
                   ButtonTheme(
                     minWidth: 160.0,
@@ -161,15 +146,40 @@ class _HomeState extends State<Home> {
                 ],
               ),
             ),
-
           ],
         ),
       ),
-     /* floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),*/ // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  Widget updateObjectifs() {
+    if (User.isQuestionnaireOver) {
+      return RaisedButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Goals()),
+          );
+        },
+        child: Text(
+          "Objectifs",
+          style: TextStyle(
+            fontSize: 20.0,
+          ),
+        ),
+        color: Colors.amber,
+      );
+    } else {
+      return RaisedButton(
+        onPressed: null,
+        child: Text(
+          "Objectifs",
+          style: TextStyle(
+            fontSize: 20.0,
+          ),
+        ),
+        color: Colors.amber,
+      );
+    }
   }
 }

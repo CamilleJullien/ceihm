@@ -3,4 +3,5 @@
    static bool hasCalciumDeficiency = false ;
    static bool hasMagnesiumDeficiency = false;
    static String regime = 'Aucun';
+   static bool isQuestionnaireOver = false;
 }
