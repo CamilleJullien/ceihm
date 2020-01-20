@@ -1,112 +1,275 @@
+import 'package:ceihm/questionnaire/page1.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'task.dart';
-import 'main.dart';
 
 
-class Profile extends StatefulWidget{
+
+
+class Profile extends StatefulWidget {
+  // This widget is the home page of your application. It is stateful, meaning
+  // that it has a State object (defined below) that contains fields that affect
+  // how it looks.
+
+  // This class is the configuration for the state. It holds the values (in this
+  // case the title) provided by the parent (in this case the App widget) and
+  // used by the build method of the State. Fields in a Widget subclass are
+  // always marked "final".
+
   @override
   _ProfileState createState() => _ProfileState();
 }
 
-class _ProfileState extends State<Profile>{
+class _ProfileState extends State<Profile> {
+  int _counter = 0;
 
-
+  void _incrementCounter() {
+    setState(() {
+      // This call to setState tells the Flutter framework that something has
+      // changed in this State, which causes it to rerun the build method below
+      // so that the display can reflect the updated values. If we changed
+      // _counter without calling setState(), then the build method would not be
+      // called again, and so nothing would appear to happen.
+      _counter++;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    // This method is rerun every time setState is called, for instance as done
+    // by the _incrementCounter method above.
+    //
+    // The Flutter framework has been optimized to make rerunning build methods
+    // fast, so that you can just rebuild anything that needs updating rather
+    // than having to individually change instances of widgets.
     return Scaffold(
-      body: Container(
-        width: MediaQuery
-            .of(context)
-            .size
-            .width,
-        height: MediaQuery
-            .of(context)
-            .size
-            .height,
-        child: Stack(
-          children: <Widget>[
-            Positioned(
-              child: Container(
-                width: MediaQuery
-                    .of(context)
-                    .size
-                    .width,
-                height: MediaQuery
-                    .of(context)
-                    .size
-                    .width/2,
-                decoration: BoxDecoration(
-                  color: Color(0xff5a348b),
-                  gradient: LinearGradient(
-                      colors: [Color(0xff8d70fe), Color(0xff2da9ef)],
-                      begin: Alignment.centerRight,
-                      end: Alignment(-1.0, -1.0)
-                  ),
-                ),
-                child: _myHeaderContent(),
-              ),
-            ),
-
-            Positioned(
-              top: 170.0,
-              left:18.0,
-              child: Container(
-                color: Colors.white,
-                width: 380,
-                height: MediaQuery
-                    .of(context)
-                    .size
-                    .height/1.4,
-
-              ),
-            ),
-          ],
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('Profile'),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.centerRight,
+                  end: Alignment(-1.0, -1.0),
+                  colors: <Color>[
+                    Color(0xff8d70fe),
+                    Color(0xff2da9ef)
+                  ])
+          ),
         ),
       ),
-      floatingActionButton: new FloatingActionButton(
-        backgroundColor: Color(0xff2da9ef),
-        foregroundColor: Color(0xffffffff),
-
-        tooltip: 'Increment',
-        child: new Text('Valider', style: TextStyle(fontSize: 10.0, color: Colors.white)),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-
-      bottomNavigationBar: BottomAppBar(
-        color: Color(0xff2da9ef),
-        shape: CircularNotchedRectangle(),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+      body: Center(
+        // Center is a layout widget. It takes a single child and positions it
+        // in the middle of the parent.
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          // crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Container(
-              height: MediaQuery
-                  .of(context)
-                  .size
-                  .width/9,
+                margin: EdgeInsets.all(15),
+                child:Column(
+                  children: <Widget>[
+
+                    Container(
+                        margin: EdgeInsets.all(10),
+                        child:Container(
+
+                          child: Row(
+                            children: <Widget>[
+                              Text(
+                                "Email",
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                ),
+                              )
+
+                            ],
+                          ),
+                        )
+
+                    ),
+                    Container(
+                      child: TextField(
+
+                      ),
+                    ),
+
+                  ],
+                )
+
+            ),
+            Column(
+              children: <Widget>[
+
+                Container(
+                    margin: EdgeInsets.all(20),
+                    child:Row(
+
+                      children: <Widget>[
+
+                        Text(
+                          "Inscription newsletter",
+                          style: TextStyle(
+                            fontSize: 20.0,
+                          ),
+                        )
+                      ],
+                    )
+
+                ),
+                Container(
+                    child:Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+
+                        Radio(
+                          value: 1,
+                          groupValue: 1 ,
+                          onChanged: null,
+                          activeColor: Colors.blue,
+                        ),
+                        Text("Oui"),
+
+                        Radio(
+                          value: 0,
+                          groupValue: 1,
+                          onChanged: null,
+                        ),
+                        Text("Non"),
+                      ],
+
+                    )
+
+                )
+              ],
             ),
 
+            Container(
+                margin: EdgeInsets.all(20),
+              child:  Row(
+
+                children: <Widget>[
+
+                  Text(
+                    "Notifications",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                    ),
+                  )
+                ],
+              )
+            ),
+            Container(
+                child:Row(
+
+                  children: <Widget>[
+                    Row(
+
+                      children: <Widget>[
+
+                  Radio(
+                  value: 0,
+                  groupValue: 1,
+                  onChanged: null,
+                ), Text("Aucune")
+                      ],
+                    ),
+                    Row(
+
+                      children: <Widget>[
+
+                      Radio(
+                      value: 0,
+                      groupValue: 1,
+                      onChanged: null,
+                    ), Text("Fréquente")
+                      ],
+                    ),
+                    Row(
+
+                      children: <Widget>[
+
+                        Radio(
+                          value: 0,
+                          groupValue: 1,
+                          onChanged: null,
+                        ), Text("Très fréquente")
+                      ],
+                    )
+
+                  ],
+                )
+            ),
+            //new Divider(height: 5.0, color: Colors.black),
+
+
+            //new Divider(height: 5.0, color: Colors.indigo),
+
+            Container(
+                margin: EdgeInsets.fromLTRB(15, 0, 0, 0),
+              child:   Row(
+
+                children: <Widget>[
+
+                  Text(
+                    "Historique",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                    ),
+                  )
+                ],
+              )
+
+            ),
+            InkWell(
+              child: Text("Historique 1"),
+              onTap: null ,
+
+            ),
+            Container(
+              margin: EdgeInsets.all(13),
+              child:
+              ButtonTheme(
+                minWidth: 120.0,
+                height: 50.0,
+                child: RaisedButton(
+                  onPressed: () {},
+                  child: Text(
+                    "Objectifs",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                    ),
+                  ),
+                  color: Colors.amber,
+                ),
+              ) ,
+            ),
+            Container(
+              margin: EdgeInsets.all(13),
+              child:
+              ButtonTheme(
+                minWidth: 120.0,
+                height: 50.0,
+                child: RaisedButton(
+                  onPressed: () {},
+                  child: Text(
+                    "Valider",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                    ),
+                  ),
+                  color: Colors.amber,
+                ),
+              ) ,
+            )
 
           ],
         ),
-
-
       ),
+      /* floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
+      ),*/ // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
-  Widget _myHeaderContent(){
-    return Align(
-      child: ListTile(
-        leading: IconButton(icon: Icon(FontAwesomeIcons.clipboardCheck), color: Colors.amber, iconSize:50.0, onPressed: (){},),
-        //leading: Text('1', style: TextStyle(fontSize: 50.0, color: Colors.amber)),
-        title: Text('Profile', style: TextStyle(fontSize: 30.0, color: Colors.white)),
-        subtitle: Text('Remplir votre adresse e-mail et choisir la fréquence de notifications reçues.', style: TextStyle(fontSize: 14.0, color: Colors.white)),
-      ),
-    );
-  }
-
-
 }
-
