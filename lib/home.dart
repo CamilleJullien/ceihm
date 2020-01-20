@@ -4,6 +4,8 @@ import 'data/user.dart';
 import 'synthesis.dart';
 import 'package:ceihm/goals/goals.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'foodListHome.dart';
+import 'synthesisHome.dart';
 
 class Home extends StatefulWidget {
   // This widget is the home page of your application. It is stateful, meaning
@@ -46,7 +48,6 @@ class _HomeState extends State<Home> {
               ),
                Positioned(
                  top:270,
-
                  child:Container(
                    width:MediaQuery.of(context).size.width,
                    child:Text('Pour accéder à plus de fonctionnalité veuillez remplir le quizz', textAlign: TextAlign.center,style: TextStyle(fontSize: 20.0)),
@@ -75,7 +76,8 @@ class _HomeState extends State<Home> {
                        minWidth: 160.0,
                        height: 130.0,
                         child: RaisedButton(
-                          onPressed: () {},
+                          onPressed: () {Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => FoodListHome()),);},
                           child: Text("Aliments", style: TextStyle(fontSize: 20.0,color: Colors.white)),
                           color: Color(0xff8d70fe),
                         ),
@@ -100,7 +102,9 @@ class _HomeState extends State<Home> {
                           minWidth: 160.0,
                           height: 130.0,
                           child: RaisedButton(
-                            onPressed: () {},
+                            onPressed: () {Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => SynthesisHome()),);
+                            },
                             child: Text("Carences", style: TextStyle(fontSize: 20.0,color: Colors.white)),
                             color: Color(0xff8d70fe),
                           ),
