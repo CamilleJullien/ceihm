@@ -69,7 +69,7 @@ class _SynthesisState extends State<Synthesis> {
             ),
             Positioned(
               top: 170.0,
-              left: 18.0,
+              //left: 18.0,
               child: Container(
                 color: Colors.white,
                 width: MediaQuery
@@ -148,7 +148,7 @@ class _SynthesisState extends State<Synthesis> {
       child: ListTile(
         leading: IconButton(
           icon: Icon(FontAwesomeIcons.clipboardCheck),
-          color: Colors.amber,
+          color: Colors.white,
           iconSize: 50.0,
           onPressed: () {},
         ),
@@ -174,11 +174,11 @@ class _SynthesisState extends State<Synthesis> {
           child: Container(
             child: Row(
               children: <Widget>[
-                Container(
+               /* Container(
                   height: 80.0,
                   width: 10.0,
                   color: deficiencyColor,
-                ),
+                ),*/
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
