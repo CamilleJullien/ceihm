@@ -67,6 +67,7 @@ class _SynthesisState extends State<Synthesis> {
                 child: _myHeaderContent(),
               ),
             ),
+
             Positioned(
               top: 170.0,
               //left: 18.0,
