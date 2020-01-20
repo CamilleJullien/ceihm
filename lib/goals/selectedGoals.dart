@@ -21,7 +21,7 @@ class SelectedGoalsState extends State<SelectedGoals> {
     return Container(
         child: Stack(
           children: <Widget>[
-            _myListView(context)
+            isThereObjectifs(context)
           ],
         )
     );
@@ -74,6 +74,25 @@ class SelectedGoalsState extends State<SelectedGoals> {
         );
       },
     );
+  }
+
+  isThereObjectifs(context){
+    print(goals.length);
+    if(goals.length != 0)
+      return _myListView(context);
+    else {
+      return Column(
+        children : <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child:  Text("Vous n'avez pas sélectionnez d'objectifs, aller "
+                "dans l'onglet \"proposés\" pour le faire !",
+                textAlign: TextAlign.center)
+          ),
+          Image.asset("assets/right-arrow.png", width: 50, height:50)
+        ]
+      );
+    }
   }
 
   
