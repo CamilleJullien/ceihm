@@ -69,5 +69,7 @@ class ProposedGoalsState extends State<ProposedGoals> with
     else
       return "validated.png";
   }
+
+
 }
 
