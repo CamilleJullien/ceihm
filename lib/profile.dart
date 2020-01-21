@@ -1,6 +1,13 @@
+import 'package:ceihm/goals/goals.dart';
+import 'package:ceihm/home.dart';
 import 'package:ceihm/questionnaire/page1.dart';
+import 'package:ceihm/synthesis.dart';
+import 'package:ceihm/task.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'goals/goalObject.dart';
+import 'goals/selectedGoals.dart';
 
 
 
@@ -65,31 +72,26 @@ class _ProfileState extends State<Profile> {
           // crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Container(
-                margin: EdgeInsets.all(15),
+                margin: EdgeInsets.all(50),
                 child:Column(
                   children: <Widget>[
 
                     Container(
-                        margin: EdgeInsets.all(10),
-                        child:Container(
-
-                          child: Row(
-                            children: <Widget>[
-                              Text(
-                                "Email",
-                                style: TextStyle(
-                                  fontSize: 20.0,
-                                ),
-                              )
-
-                            ],
+                        margin: EdgeInsets.all(15),
+                        child:Text(
+                          "E-mail",
+                          style: TextStyle(
+                            fontSize: 20.0,
                           ),
                         )
-
                     ),
                     Container(
                       child: TextField(
-
+                          enabled: false,
+                          controller: TextEditingController(text:"nutrition@gmail.com"),
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder()
+                          )
                       ),
                     ),
 
@@ -106,8 +108,7 @@ class _ProfileState extends State<Profile> {
 
                       children: <Widget>[
 
-                        Text(
-                          "Inscription newsletter",
+                        Text("Inscription newsletter",
                           style: TextStyle(
                             fontSize: 20.0,
                           ),
@@ -146,8 +147,7 @@ class _ProfileState extends State<Profile> {
             Container(
                 margin: EdgeInsets.all(20),
               child:  Row(
-
-                children: <Widget>[
+                               children: <Widget>[
 
                   Text(
                     "Notifications",
@@ -203,29 +203,84 @@ class _ProfileState extends State<Profile> {
 
 
             //new Divider(height: 5.0, color: Colors.indigo),
-
-            Container(
-                margin: EdgeInsets.fromLTRB(15, 0, 0, 0),
-              child:   Row(
-
-                children: <Widget>[
-
-                  Text(
-                    "Historique",
-                    style: TextStyle(
-                      fontSize: 20.0,
-                    ),
-                  )
-                ],
-              )
-
+            RaisedButton(
+              padding: EdgeInsets.all(0.0),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Page1()),
+                );
+              },
+              textColor: Colors.white,
+              child: Container(
+                padding: EdgeInsets.all(5.0),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: <Color>[
+                      Color(0xff8d70fe),
+                      Color(0xff2da9ef),
+                    ],
+                  ),
+                ),
+                child: Text(
+                    'Retour au questionnaire',
+                    style: TextStyle(fontSize: 20)
+                ),
+              ),
             ),
-            InkWell(
-              child: Text("Historique 1"),
-              onTap: null ,
-
+            //new Divider(height: 5.0, color: Colors.indigo),
+            RaisedButton(
+              padding: EdgeInsets.all(0.0),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Goals()),
+                );
+              },
+              textColor: Colors.white,
+              child: Container(
+                padding: EdgeInsets.all(5.0),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: <Color>[
+                      Color(0xff8d70fe),
+                      Color(0xff2da9ef),
+                    ],
+                  ),
+                ),
+                child: Text(
+                    '           Historique            ',
+                    style: TextStyle(fontSize: 20)
+                ),
+              ),
             ),
-            Container(
+            //new Divider(height: 5.0, color: Colors.indigo),
+            RaisedButton(
+              padding: EdgeInsets.all(0.0),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Goals()),
+                );
+              },
+              textColor: Colors.white,
+              child: Container(
+                padding: EdgeInsets.all(5.0),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: <Color>[
+                      Color(0xff8d70fe),
+                      Color(0xff2da9ef),
+                    ],
+                  ),
+                ),
+                child: Text(
+                    '             Objectifs             ',
+                    style: TextStyle(fontSize: 20)
+                ),
+              ),
+            ),
+           /* Container(
               margin: EdgeInsets.all(13),
               child:
               ButtonTheme(
@@ -242,8 +297,8 @@ class _ProfileState extends State<Profile> {
                   color: Colors.amber,
                 ),
               ) ,
-            ),
-            Container(
+            ),*/
+            /*Container(
               margin: EdgeInsets.all(13),
               child:
               ButtonTheme(
@@ -260,7 +315,8 @@ class _ProfileState extends State<Profile> {
                   color: Colors.amber,
                 ),
               ) ,
-            )
+            )*/
+
 
           ],
         ),
