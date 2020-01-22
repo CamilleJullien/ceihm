@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'profile.dart';
-import 'profile.dart';
 import 'profileView.dart';
-import 'synthesis.dart';
 import 'home.dart';
-import 'package:ceihm/goals/goals.dart';
-import 'profile.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Profile(),
+      home: Home(),
       //home: Synthesis(),
     );
   }

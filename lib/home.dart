@@ -1,21 +1,14 @@
 import 'package:ceihm/questionnaire/page1.dart';
+import 'package:ceihm/synthesisHome.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'data/user.dart';
+import 'foodListHome.dart';
 import 'synthesis.dart';
 import 'package:ceihm/goals/goals.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Home extends StatefulWidget {
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   @override
   _HomeState createState() => _HomeState();
 }
@@ -46,42 +39,12 @@ class _HomeState extends State<Home> {
                 ),
               ),
                Positioned(
-                 top:270,
-
+                 top:200,
                    child:Container(
                      margin: EdgeInsets.all(20),
                      width:MediaQuery.of(context).size.width/1.1,
-                     //child:Text('Pour accéder à plus de fonctionnalité veuillez remplir le quizz', textAlign: TextAlign.center,style: TextStyle(fontSize: 20.0)),
-                     child: RaisedButton(
-                       onPressed: () {
-                         showCupertinoDialog(
-                           context: context,
-                           builder: (_) => CupertinoAlertDialog(
-                             title: Text("Toto"),
-                             content: Text("Toto"),
-                             actions:<Widget>[
-                               new FlatButton(
-                                   onPressed: () {
-                                     Navigator.of(context).pop();
-                                   },
-                                   child: new Text("OK"))
-                             ],
-                           ),
-                         );
-                       },
-
-                       child : Padding(
-                         padding: const EdgeInsets.all(8.0),
-                         child:Text("Votre page d'accueil à changer ! Cliquez pour en savoir plus", textAlign: TextAlign.center,style: TextStyle(fontSize: 20.0,color: Colors.white)),
-                       ),
-
-
-                       color: Color(0xff8d70fe),
-                     ),
+                     child: setSubtitle()
                  ),
-
-
-
                ),
                Positioned.fill(
                top:1,
@@ -106,8 +69,11 @@ class _HomeState extends State<Home> {
                        minWidth: 160.0,
                        height: 130.0,
                         child: RaisedButton(
-                          onPressed: () {},
-                          child: Text("Aliments", style: TextStyle(fontSize: 20.0,color: Colors.white)),
+                          onPressed: () {Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => FoodListHome()),);},
+                          child: Text(setButtonText("Aliments"), style:
+                          TextStyle
+                            (fontSize: 20.0,color: Colors.white)),
                           color: Color(0xff8d70fe),
                         ),
                         ),
@@ -132,8 +98,11 @@ class _HomeState extends State<Home> {
                           minWidth: 160.0,
                           height: 130.0,
                           child: RaisedButton(
-                            onPressed: () {},
-                            child: Text("Carences", style: TextStyle(fontSize: 20.0,color: Colors.white)),
+                            onPressed: () {Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => SynthesisHome()),);
+                            },
+                            child: Text(setButtonText("Carences"), style: TextStyle(fontSize: 20.0,
+                                color: Colors.white)),
                             color: Color(0xff8d70fe),
                           ),
                         ),
@@ -143,9 +112,9 @@ class _HomeState extends State<Home> {
               ),
     ],),),
 
-
     );
   }
+
   AlertDialog alertDialog(){
     return AlertDialog(
       title: Text("Toto"),
@@ -157,6 +126,47 @@ class _HomeState extends State<Home> {
       ],
       elevation:24,
     );
+  }
+  
+  setButtonText(value){
+    if (User.isQuestionnaireOver) {
+      return "Mes " + value;
+    }
+    else{
+      return value;
+    }
+  }
+
+  Widget setSubtitle(){
+    if (User.isQuestionnaireOver) {
+      return RaisedButton(
+        onPressed: () {
+          showCupertinoDialog(
+            context: context,
+            builder: (_) => CupertinoAlertDialog(
+              title: Text("Toto"),
+              content: Text("Toto"),
+              actions:<Widget>[
+                new FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: new Text("OK"))
+              ],
+            ),
+          );
+        },
+        child : Padding(
+          padding: const EdgeInsets.all(8.0),
+          child:Text("Votre page d'accueil à changer ! Cliquez pour en savoir plus", textAlign: TextAlign.center,style: TextStyle(fontSize: 20.0,color: Colors.white)),
+        ),
+        color: Color(0xff8d70fe),
+      );
+    }
+    else{
+      return Text('Pour accéder à plus de fonctionnalité veuillez remplir le '
+          'quizz', textAlign: TextAlign.center,style: TextStyle(fontSize: 20.0));
+    }
   }
 
 
@@ -180,6 +190,7 @@ class _HomeState extends State<Home> {
       );
     }
   }
+
   Widget _myHeaderContent() {
     return Align(
       child: ListTile(
