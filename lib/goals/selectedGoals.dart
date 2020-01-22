@@ -34,6 +34,7 @@ class SelectedGoalsState extends State<SelectedGoals> {
       shrinkWrap: true,
       itemBuilder: (context, index) {
         return Card(
+          margin: EdgeInsets.only(top: 10.0),
           child: Column(
             children: <Widget>[
               ListTile(
@@ -47,33 +48,62 @@ class SelectedGoalsState extends State<SelectedGoals> {
                       textAlign: TextAlign.center)
               ),
              Container(
+               margin: EdgeInsets.only(top: 10.0, left: 15.0),
+               width: double.infinity,
+               child: Text("Progression :", textAlign: TextAlign.start),
+             ),
+             Container(
                height: 50,
+               width: double.infinity,
+               alignment: Alignment.center,
                child: ListView.builder(
-                 itemCount: goals[index].statusL.length,
-                 scrollDirection: Axis.horizontal,
-                 itemBuilder: (context, indexCheck){
-                   return Container(
-                       width: MediaQuery.of(context).size.width/(goals[index]
-                           .statusL.length),
-                       padding: EdgeInsets.all(15.0),
-                       child: Container(
-                         child: Row(
-                           children: <Widget>[
-                             new Image.asset("assets/" + goals[index]
-                                 .statusL[indexCheck].getStatusValue() + ".png",
-                                 width: 20, height: 20),
-                           ],
-                         ),
-                       )
-                   );
-                 }
-                 )
+                    itemCount: goals[index].statusL.length,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, indexCheck){
+                      return Container(
+                        margin: EdgeInsets.all(10.0),
+                        padding: myMargin(indexCheck, goals[index].howMuch),
+                        decoration: myBoxDecoration(indexCheck, goals[index].howMuch),
+                        child: new Image.asset("assets/" + goals[index]
+                              .statusL[indexCheck].getStatusValue() + ".png",
+                              width: 20, height: 20),
+                      );
+                    }
+                    ),
              )
             ],
           ),
         );
       },
     );
+  }
+
+  myMargin(index, weeks){
+    if(index%weeks == 0 && index != 0) {
+      return EdgeInsets.only(
+        left: 20.0,
+      );
+    }
+    else
+      return EdgeInsets.all(0);
+  }
+
+  myBoxDecoration(index, weeks){
+    if(index%weeks == 0 && index != 0){
+      return BoxDecoration(
+        border: Border(
+          left: BorderSide(
+            color: Color.fromRGBO(113, 114, 143, 100)
+          )
+        )
+      );
+    }
+    else{
+      BoxDecoration();
+    }
+
   }
 
   isThereObjectifs(context){
