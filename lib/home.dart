@@ -1,4 +1,5 @@
 import 'package:ceihm/questionnaire/page1.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'data/user.dart';
 import 'synthesis.dart';
@@ -47,16 +48,46 @@ class _HomeState extends State<Home> {
                Positioned(
                  top:270,
 
-                 child:Container(
-                   width:MediaQuery.of(context).size.width,
-                   child:Text('Pour accéder à plus de fonctionnalité veuillez remplir le quizz', textAlign: TextAlign.center,style: TextStyle(fontSize: 20.0)),
+                   child:Container(
+                     margin: EdgeInsets.all(20),
+                     width:MediaQuery.of(context).size.width/1.1,
+                     //child:Text('Pour accéder à plus de fonctionnalité veuillez remplir le quizz', textAlign: TextAlign.center,style: TextStyle(fontSize: 20.0)),
+                     child: RaisedButton(
+                       onPressed: () {
+                         showCupertinoDialog(
+                           context: context,
+                           builder: (_) => CupertinoAlertDialog(
+                             title: Text("Toto"),
+                             content: Text("Toto"),
+                             actions:<Widget>[
+                               new FlatButton(
+                                   onPressed: () {
+                                     Navigator.of(context).pop();
+                                   },
+                                   child: new Text("OK"))
+                             ],
+                           ),
+                         );
+                       },
+
+                       child : Padding(
+                         padding: const EdgeInsets.all(8.0),
+                         child:Text("Votre page d'accueil à changer ! Cliquez pour en savoir plus", textAlign: TextAlign.center,style: TextStyle(fontSize: 20.0,color: Colors.white)),
+                       ),
+
+
+                       color: Color(0xff8d70fe),
+                     ),
                  ),
+
+
 
                ),
                Positioned.fill(
                top:1,
                child:Container(
-                margin: EdgeInsets.all(30),
+                margin: EdgeInsets.all(20),
+                 width:MediaQuery.of(context).size.width/1.1,
                   child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
@@ -87,7 +118,8 @@ class _HomeState extends State<Home> {
               Positioned.fill(
                   top:280,
                   child: Container(
-                    margin: EdgeInsets.all(30),
+                    width:MediaQuery.of(context).size.width/1.1,
+                    margin: EdgeInsets.all(20),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
@@ -114,7 +146,18 @@ class _HomeState extends State<Home> {
 
     );
   }
-
+  AlertDialog alertDialog(){
+    return AlertDialog(
+      title: Text("Toto"),
+      content: Text("Toto"),
+      actions:[
+        CupertinoDialogAction(
+          child: Text("OK"),
+        ),
+      ],
+      elevation:24,
+    );
+  }
 
 
   Widget updateObjectifs() {
