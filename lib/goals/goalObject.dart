@@ -9,7 +9,8 @@ class Goal {
   List<Status> statusL;
 
   Goal(String type, int howMuch, int week, String image){
-    this.goalSentence = "Manger " + howMuch.toString() + " fois " + type + " pendant " + week.toString() + " semaine(s)";
+    this.goalSentence = "Manger " + howMuch.toString() + " fois " + type + " "
+        "pendant " + week.toString() + " semaines";
     this.status = false;
     this.weeks = week;
     this.howMuch = howMuch;
