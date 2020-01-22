@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class FoodListHome extends StatefulWidget{
@@ -140,6 +139,21 @@ class _FoodList extends State<FoodListHome>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('Liste des aliments'),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.centerRight,
+                  end: Alignment(-1.0, -1.0),
+                  colors: <Color>[
+                    Color(0xff8d70fe),
+                    Color(0xff2da9ef)
+                  ])
+          ),
+        ),
+      ),
       body: Container(
         width: MediaQuery
             .of(context)
@@ -151,40 +165,11 @@ class _FoodList extends State<FoodListHome>{
             .height,
         child: Stack(
           children: <Widget>[
-            Positioned(
-              child: Container(
-                width: MediaQuery
-                    .of(context)
-                    .size
-                    .width,
-                height: MediaQuery
-                    .of(context)
-                    .size
-                    .width/2,
-                decoration: BoxDecoration(
-                  color: Color(0xff5a348b),
-                  gradient: LinearGradient(
-                      colors: [
-                        Color(0xff8d70fe),
-                        Color(0xff2da9ef)
-                      ],
-                      begin: Alignment.centerRight,
-                      end: Alignment(-1.0, -1.0)
-                  ),
-                ),
-                child: _myHeaderContent(),
-              ),
-            ),
             Container(
               child : Positioned(
-                top: 170.0,
                 child: Container(
                   color: Colors.white,
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery
-                      .of(context)
-                      .size
-                      .height/1.3,
                   child: StaggeredGridView.count(
                     crossAxisCount: 2,
                     crossAxisSpacing: 10.0,
@@ -254,37 +239,15 @@ class _FoodList extends State<FoodListHome>{
 
                     ],
                   ),
-                  /*child: ListView.builder(
-                      itemCount: deficiencies.length,
-                      itemBuilder: (context, position){
-                        return Container(
-                          child: _myListContainer(
-                              deficiencies[position].deficiencyName, deficiencies[position].deficiencyDescription,
-                              deficiencies[position].deficiencyTime,deficiencies[position].status),
-                        );
-                      }),*/
                 ),
-
               ),
             ),
-
           ],
         ),
       )
     );
   }
-  Widget _myHeaderContent(){
-    return Align(
-      child: ListTile(
-        leading: IconButton(icon: Icon(FontAwesomeIcons.utensils), color: Colors.white, iconSize:50.0, onPressed: (){},),
-        title: Text('Liste des aliments', style: TextStyle(fontSize: 30.0,
-            color: Colors.white)),
-        subtitle: Text("Voici la liste des aliments par carrences", style:
-        TextStyle
-          (fontSize: 14.0, color: Colors.white)),
-      ),
-    );
-  }
+
   Widget _myListContainer(String deficiencyName, String deficiencyDescription, String deficiencyTime, Color deficiencyColor){
     return Padding(
       padding: const EdgeInsets.all(8.0),
