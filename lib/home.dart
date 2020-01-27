@@ -39,7 +39,7 @@ class _HomeState extends State<Home> {
                 ),
               ),
                Positioned(
-                 top:200,
+                 top:190,
                    child:Container(
                      margin: EdgeInsets.all(20),
                      width:MediaQuery.of(context).size.width/1.1,
@@ -47,7 +47,7 @@ class _HomeState extends State<Home> {
                  ),
                ),
                Positioned.fill(
-               top:1,
+               top:100,
                child:Container(
                 margin: EdgeInsets.all(10),
                  width:MediaQuery.of(context).size.width/1.1,
@@ -68,7 +68,7 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                        ButtonTheme(
-                       minWidth: 130.0,
+                       minWidth: 160.0,
                        height: 130.0,
                         child: RaisedButton(
                           onPressed: () {Navigator.push(context,
@@ -84,7 +84,7 @@ class _HomeState extends State<Home> {
                 ),
                ),
               Positioned.fill(
-                  top:280,
+                  top:400,
                   child: Container(
                     width:MediaQuery.of(context).size.width/1.1,
                     margin: EdgeInsets.all(10),
@@ -97,7 +97,7 @@ class _HomeState extends State<Home> {
                           child: updateObjectifs(),
                         ),
                         ButtonTheme(
-                          minWidth: 130.0,
+                          minWidth: 160.0,
                           height: 130.0,
                           child: RaisedButton(
                             onPressed: () {Navigator.push(context,
@@ -159,7 +159,9 @@ class _HomeState extends State<Home> {
 
   Widget setSubtitle(){
     if (User.isQuestionnaireOver) {
-      return Text(""); /*RaisedButton(
+      return Text("Merci d'avoir répondu au questionnaire, vous avez "
+          "maintenant accès à plus de fonctionnalités", textAlign: TextAlign.center,style: TextStyle(fontSize: 20.0));
+      /*RaisedButton(
         onPressed: () {
           showCupertinoDialog(
             context: context,
@@ -222,7 +224,8 @@ class _HomeState extends State<Home> {
         ),
         title: Text('Bienvenue',
             style: TextStyle(fontSize: 30.0, color: Colors.white)),
-        subtitle: Text("Notre application va vous permettre d'identifier vos carences et de vous proposez des conseils pour palier à ces carences",
+        subtitle: Text("Identifiez vos carences et sélectionnez des objectifs"
+            " pour y remédier !",
             style: TextStyle(fontSize: 15.0, color: Colors.white)),
       ),
     );
