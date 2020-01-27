@@ -1,26 +1,27 @@
 import 'package:ceihm/data/user.dart';
 import 'package:ceihm/questionnaire/page1.dart';
 import 'package:ceihm/questionnaire/page3.dart';
+import 'package:ceihm/questionnaire/page5.dart';
 import 'package:ceihm/synthesis.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Page2 extends StatefulWidget {
-  Page2({Key key}) : super(key: key);
+class Page4 extends StatefulWidget {
+  Page4({Key key}) : super(key: key);
 
   @override
-  _Page2State createState() => _Page2State();
+  _Page4State createState() => _Page4State();
 }
 
-class _Page2State extends State<Page2> {
+class _Page4State extends State<Page4> {
   var _formKey = GlobalKey<FormState>();
-  String dropdownValue = User.essouffle;
+  String dropdownValue = User.tete;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Question 2/11"),
+          title: Text("Question 4/11"),
           flexibleSpace: Container(
             decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -33,7 +34,7 @@ class _Page2State extends State<Page2> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Text(
-                "Êtes-vous souvent essoufflé même sans effort physique ?",
+                "Ressentez-vous souvent des maux de têtes ?",
                 style: TextStyle(
                     color: Colors.blueAccent,
                     fontSize: 20,
@@ -54,7 +55,7 @@ class _Page2State extends State<Page2> {
                     onChanged: (String newValue) {
                       setState(() {
                         dropdownValue = newValue;
-                        User.fatigue = newValue;
+                        User.tete = newValue;
                       });
                     },
                     items: <String>[
@@ -76,7 +77,7 @@ class _Page2State extends State<Page2> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Page1()),
+                        MaterialPageRoute(builder: (context) => Page3()),
                       );
                     },
                     textColor: Colors.white,
@@ -98,7 +99,7 @@ class _Page2State extends State<Page2> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Page3()),
+                        MaterialPageRoute(builder: (context) => Page5()),
                       );
                     },
                     textColor: Colors.white,
@@ -106,7 +107,9 @@ class _Page2State extends State<Page2> {
                       padding: EdgeInsets.all(5.0),
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors: <Color>[Color(0xff8d70fe), Color(0xff2da9ef)
+                          colors: <Color>[
+                            Color(0xff8d70fe),
+                            Color(0xff2da9ef),
                           ],
                         ),
                       ),
