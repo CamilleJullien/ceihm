@@ -1,10 +1,10 @@
+import 'package:ceihm/profile.dart';
 import 'package:ceihm/questionnaire/page1.dart';
 import 'package:ceihm/synthesisHome.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'data/user.dart';
 import 'foodListHome.dart';
-import 'synthesis.dart';
 import 'package:ceihm/goals/goals.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -49,7 +49,7 @@ class _HomeState extends State<Home> {
                Positioned.fill(
                top:1,
                child:Container(
-                margin: EdgeInsets.all(20),
+                margin: EdgeInsets.all(10),
                  width:MediaQuery.of(context).size.width/1.1,
                   child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -59,14 +59,16 @@ class _HomeState extends State<Home> {
                         height: 130.0,
                         child: RaisedButton(
                           onPressed: () {
-                            Navigator.push(context,MaterialPageRoute(builder: (context) => Page1()),);
+                            buttonOutput();
                             },
-                        child: Text("Questionnaire", style: TextStyle(fontSize: 20.0, color: Colors.white)),
+                        child: Text(setQuestionnaireButtonText(), style:
+                        TextStyle
+                          (fontSize: 20.0, color: Colors.white)),
                         color: Color(0xff8d70fe),
                         ),
                       ),
                        ButtonTheme(
-                       minWidth: 160.0,
+                       minWidth: 130.0,
                        height: 130.0,
                         child: RaisedButton(
                           onPressed: () {Navigator.push(context,
@@ -85,7 +87,7 @@ class _HomeState extends State<Home> {
                   top:280,
                   child: Container(
                     width:MediaQuery.of(context).size.width/1.1,
-                    margin: EdgeInsets.all(20),
+                    margin: EdgeInsets.all(10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
@@ -95,7 +97,7 @@ class _HomeState extends State<Home> {
                           child: updateObjectifs(),
                         ),
                         ButtonTheme(
-                          minWidth: 160.0,
+                          minWidth: 130.0,
                           height: 130.0,
                           child: RaisedButton(
                             onPressed: () {Navigator.push(context,
@@ -115,6 +117,15 @@ class _HomeState extends State<Home> {
     );
   }
 
+  buttonOutput(){
+    if(!User.isQuestionnaireOver)
+      return Navigator.push(context,MaterialPageRoute(builder: (context) =>
+          Page1()),);
+    else
+      return Navigator.push(context,MaterialPageRoute(builder: (context) =>
+          Profile()),);
+  }
+
   AlertDialog alertDialog(){
     return AlertDialog(
       title: Text("Toto"),
@@ -127,8 +138,17 @@ class _HomeState extends State<Home> {
       elevation:24,
     );
   }
-  
+
+  setQuestionnaireButtonText(){
+    if(User.isQuestionnaireOver){
+      return "Mon Profil";
+    }
+    else {
+      return "Questionnaire";
+    }
+  }
   setButtonText(value){
+
     if (User.isQuestionnaireOver) {
       return "Mes " + value;
     }
@@ -139,7 +159,7 @@ class _HomeState extends State<Home> {
 
   Widget setSubtitle(){
     if (User.isQuestionnaireOver) {
-      return RaisedButton(
+      return Text(""); /*RaisedButton(
         onPressed: () {
           showCupertinoDialog(
             context: context,
@@ -161,7 +181,7 @@ class _HomeState extends State<Home> {
           child:Text("Votre page d'accueil à changer ! Cliquez pour en savoir plus", textAlign: TextAlign.center,style: TextStyle(fontSize: 20.0,color: Colors.white)),
         ),
         color: Color(0xff8d70fe),
-      );
+      );*/
     }
     else{
       return Text('Pour accéder à plus de fonctionnalité veuillez remplir le '
