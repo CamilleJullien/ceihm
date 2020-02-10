@@ -47,7 +47,7 @@ class _HomeState extends State<Home> {
                  ),
                ),
                Positioned.fill(
-               top:100,
+               top:140,
                child:Container(
                 margin: EdgeInsets.all(10),
                  width:MediaQuery.of(context).size.width/1.1,
@@ -84,7 +84,7 @@ class _HomeState extends State<Home> {
                 ),
                ),
               Positioned.fill(
-                  top:400,
+                  top:430,
                   child: Container(
                     width:MediaQuery.of(context).size.width/1.1,
                     margin: EdgeInsets.all(10),
