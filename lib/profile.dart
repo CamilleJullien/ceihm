@@ -1,4 +1,4 @@
-import 'package:ceihm/goals/goals.dart';
+import 'package:ceihm/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -193,7 +193,7 @@ class _ProfileState extends State<Profile> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Goals()),
+                  MaterialPageRoute(builder: (context) => Home()),
                 );
               },
               textColor: Colors.white,
